@@ -1,0 +1,18 @@
+<header class="sticky-top container-fluid">
+ <nav class="navbar navbar-light bg-white row-fluid">
+    <img src="assets/img/ford.png" class="navbar-brand col-md-2" alt="Ford logo">
+    <div *ngIf="user$ | async as user">
+      <div *ngIf="estaLogado(); else login">
+        <i class="fa fa-user-circle">
+          <span>{{user.name}}</span>
+          <a (click)="logout()">Logout</a>
+        </i>
+      </div>
+    </div>
+ </nav>
+ <ng-template #login>
+  <span class="navbar-text">
+    <a [routerLink]="['']">Login</a>
+  </span>
+ </ng-template>
+</header>

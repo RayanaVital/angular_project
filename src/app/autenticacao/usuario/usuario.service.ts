@@ -1,6 +1,6 @@
 import { TokenService } from './../token.service';
 import { Injectable } from '@angular/core';
-import { jwt_decode } from "jwt-decode";
+import jwt_decode  from "jwt-decode";
 import { Usuario } from './usuario';
 import { BehaviorSubject, Subject } from 'rxjs';
 
@@ -15,7 +15,7 @@ export class UsuarioService {
     if (this.tokenService.possuiToken()){
       this.decodificaJWT();
     }
-   }
+  }
 
   private decodificaJWT(){
     const token = this.tokenService.retornaToken();
