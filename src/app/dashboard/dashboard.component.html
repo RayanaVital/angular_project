@@ -1,1 +1,87 @@
-<p>dashboard works!</p>
+<h2 class="text-primary text-center"> Dashboard FORD</h2>
+
+  <div class="row justify-content-center m-0">
+
+    <div class="col">
+      <div class="card border border-dark p-2 h-100">
+          <div class="card-header">
+            Veiculo
+          </div>
+          <div class="card-body me-auto ms-auto">
+            <select
+            [(ngModel)]="veiculoSelecionado"
+            >
+              <option *ngFor="let veiculo of veiculos" [ngValue]="veiculo">{{veiculo.vehicle}}</option>
+            </select>
+          </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card border border-dark p-2 h-100">
+        <div class="card-header">
+          Total de Vendas
+        </div>
+        <div class="card-body">
+          <p class="text-primary fs-3 text"> {{ veiculoSelecionado?.volumetotal }} </p>
+          <p class="text-secondary"> Unid.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card border border-dark p-2 h-100">
+        <div class="card-header">
+          Conectados
+        </div>
+        <div class="card-body">
+          <p class="text-primary fs-3 text"> {{ veiculoSelecionado.connected }} </p>
+          <p class="text-secondary"> Unid.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card border border-dark p-2 h-100">
+        <div class="card-header">
+          Update Software
+        </div>
+        <div class="card-body">
+          <p class="text-primary fs-3 text"> {{ veiculoSelecionado.softwareUpdates }} </p>
+          <p class="text-secondary"> Unid.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <img [src]="getImagemVeiculo(veiculoSelecionado)" class="img-fluid d-none d-sm-block mt-4 mx-auto w-75" alt="Responsive image">
+
+  <table class="table table-bordered border-dark ms-auto">
+    <thead class="table-primary">
+      <tr>
+        <th  scope="col">Código - Vin</th>
+        <th scope="col">Odômetro</th>
+        <th scope="col">Nivel de Combustivel</th>
+        <th scope="col">Status</th>
+        <th scope="col">Lat.</th>
+        <th scope="col">Long.</th>
+      </tr>
+    </thead>
+    <tbody class="table-light">
+      <tr>
+        <td>
+          <input type="text" class="form-control" [ngModel]="textoBuscaVin" (ngModelChange)="getVeiculoData($event)" placeholder="Código - Vin">
+        </td>
+        <td>{{veiculoDataSelecionado.odometer}}</td>
+        <td>{{veiculoDataSelecionado.fuelLevel}}</td>
+        <td>{{veiculoDataSelecionado.status}}</td>
+        <td>{{veiculoDataSelecionado.lat}}</td>
+        <td>{{veiculoDataSelecionado.long}}</td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+    </tbody>
+
+
+

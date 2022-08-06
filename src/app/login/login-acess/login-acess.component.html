@@ -1,27 +1,40 @@
-<h4 class="text-center">Login</h4>
-
-<form class="form mt-4" #loginForm = "ngForm" (ngSubmit)="login()">
-
-  <div class="form-group">
-    <input class="form-control"
-      placeholder="Nome do usuário"
-      [(ngModel)]="usuario" name="usuario"
-      #campoUsuario = "ngModel"
-      required />
-    <app-mensagem *ngIf="campoUsuario.invalid && campoUsuario.touched" mensagem="Usuário Obrigatório."></app-mensagem>
+<div class="sticky-top p-3 mb-2 bg-light">
+  <div class="text-center">
+    <img class="img-fluid col-md-3 mb-3" src="assets/img/ford.png" alt="Logo da empresa Ford">
   </div>
 
+  <h4 class="text-center text-primary">Boas Vindas</h4>
+  <form class="form mt-4" #loginForm = "ngForm" (ngSubmit)="login()">
 
-  <div class="form-group">
-    <input type="password" class="form-control"
-    placeholder="Senha"
-    [(ngModel)]="senha" name="senha"
-    #campoSenha = "ngModel"
-    required/>
-    <app-mensagem *ngIf="campoSenha.invalid && campoUsuario.touched" mensagem="Senha Obrigatória."></app-mensagem>
-  </div>
+    <div class="form-group mb-3">
+      <input class="form-control"
+        placeholder="Nome do usuário"
+        [(ngModel)]="usuario" name="usuario"
+        #campoUsuario = "ngModel"
+        required
+      />
+      <app-mensagem
+        *ngIf="campoUsuario.invalid && campoUsuario.touched"
+        mensagem="Usuário Obrigatório.">
+      </app-mensagem>
+    </div>
 
-  <button type='submit' class="btn btn-primary btn-block" [disabled] = "loginForm.invalid">Entrar</button>
+    <div class="form-group mb-3">
+      <input type="password" class="form-control"
+        placeholder="Senha"
+        [(ngModel)]="senha" name="senha"
+        #campoSenha = "ngModel"
+        required
+      />
+      <app-mensagem
+        *ngIf="campoSenha.invalid && campoUsuario.touched"
+        mensagem="Senha Obrigatória.">
+      </app-mensagem>
+    </div>
+    <div class="d-grid gap-2">
+      <button type='submit' class="btn btn-secondary btn-block" [disabled] = "loginForm.invalid">Entrar</button>
+    </div>
 
-</form>
+  </form>
 
+</div>

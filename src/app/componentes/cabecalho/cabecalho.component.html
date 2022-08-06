@@ -1,11 +1,26 @@
 <header class="sticky-top container-fluid">
  <nav class="navbar navbar-light bg-white row-fluid">
-    <img src="assets/img/ford.png" class="navbar-brand col-md-2" alt="Ford logo">
+    <i class="fa fa-bars mr-2"
+    (click)="menu.abreMenu()"
+    (keyup.space)="menu.abreMenu()"
+    >
+    </i>
+   <app-menu #menu>
+    <img class="img-fluid col-md-3 mb-3 mt-4 ms-4" src="assets/img/ford.png" alt="Logo da empresa Ford">
+    <ul class="list-unstyled">
+      <li>
+        <a [routerLink]="['home']">Home</a>
+      </li>
+      <li>
+        <a [routerLink]="['dashboard']">Dashboard</a>
+      </li>
+    </ul>
+   </app-menu>
     <div *ngIf="user$ | async as user">
       <div *ngIf="estaLogado(); else login">
         <i class="fa fa-user-circle">
           <span>{{user.name}}</span>
-          <a (click)="logout()">Logout</a>
+          <a class="ms-2" (click)="logout()">Logout</a>
         </i>
       </div>
     </div>
