@@ -1,0 +1,57 @@
+
+<h2 class="text-primary text-center"> Dashboard FORD</h2>
+
+<div class="row justify-content-center m-0">
+
+  <div class="col">
+    <div class="card border border-dark p-2 h-100">
+      <div class="card-header">
+        Veiculo
+      </div>
+      <div class="card-body me-auto ms-auto">
+        <select [(ngModel)]="veiculoSelecionado">
+          <option *ngFor="let veiculo of veiculos" [ngValue]="veiculo">{{veiculo.vehicle}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card border border-dark p-2 h-100">
+      <div class="card-header">
+        Total de Vendas
+      </div>
+      <div class="card-body">
+        <p class="text-primary fs-3 text"> {{ veiculoSelecionado?.volumetotal }} </p>
+        <p class="text-secondary"> Unid.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card border border-dark p-2 h-100">
+      <div class="card-header">
+        Conectados
+      </div>
+      <div class="card-body">
+        <p class="text-primary fs-3 text"> {{ veiculoSelecionado.connected }} </p>
+        <p class="text-secondary"> Unid.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card border border-dark p-2 h-100">
+      <div class="card-header">
+        Update Software
+      </div>
+      <div class="card-body">
+        <p class="text-primary fs-3 text"> {{ veiculoSelecionado.softwareUpdates }} </p>
+        <p class="text-secondary"> Unid.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+<img [src]="getImagemVeiculo(veiculoSelecionado)" class="img-fluid d-none d-sm-block mt-4 mx-auto w-75"
+  alt="Responsive image">
