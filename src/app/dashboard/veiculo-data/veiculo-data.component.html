@@ -12,8 +12,8 @@
   <tbody class="table-light">
     <tr>
       <td>
-        <input type="text" class="form-control" [ngModel]="textoBuscaVin" (ngModelChange)="getVeiculoData($event)"
-          placeholder="Código - Vin">
+        <input type="search" class="form-control" [ngModel]="textoBuscaVin" (ngModelChange)="getVeiculoData($event)"
+          placeholder="Insira o código do veiculo">
       </td>
       <td>{{veiculoDataSelecionado.odometer}}</td>
       <td>{{veiculoDataSelecionado.fuelLevel}}</td>

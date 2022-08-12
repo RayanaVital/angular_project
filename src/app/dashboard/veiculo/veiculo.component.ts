@@ -20,7 +20,16 @@ export class VeiculoComponent implements OnInit {
 
   ngOnInit(): void {
 
-     this.veiculosService.getVeiculos()
+    // getDogsBreed() {
+
+    // this.$dogsBreed()
+    //   .pipe(map(data => {
+    //     var dogs = this.keyValue.transform(data.message)
+    //     console.log(dogs)
+    //   }))
+    //   .subscribe();
+
+      this.veiculosService.getVeiculos()
       .subscribe({
         next: (resp) => {
           console.log(resp);

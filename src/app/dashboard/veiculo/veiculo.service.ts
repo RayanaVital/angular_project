@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { VeiculosAPI } from './veiculo';
 
+
 const API = environment.apiUrl;
 
 @Injectable({
@@ -15,6 +16,12 @@ export class VeiculoService {
   getVeiculos(){
     return this.http.get<VeiculosAPI>(`${API}/vehicle`);
   }
+
+  // $veiculo(): Observable <VeiculosAPI> {
+  //   return this.http.get<VeiculosAPI>(`${API}/vehicle`);
+  // }
+
+
 
 
 }
