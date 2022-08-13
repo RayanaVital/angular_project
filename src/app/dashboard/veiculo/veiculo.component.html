@@ -10,6 +10,7 @@
       </div>
       <div *ngIf="veiculos$ | async as veiculos" class="card-body me-auto ms-auto">
         <select  [(ngModel)]="veiculoSelecionado">
+          <option  [ngValue]="undefined" disabled>Selecione</option>
           <option *ngFor="let veiculo of veiculos" [ngValue]="veiculo">{{veiculo.vehicle}}</option>
         </select>
       </div>
@@ -55,3 +56,6 @@
 </div>
 <img *ngIf="!!veiculoSelecionado" [src]="getImagemVeiculo(veiculoSelecionado)" class="img-fluid d-none d-sm-block mt-4 mx-auto w-75"
   alt="Responsive image">
+
+  <img *ngIf="!veiculoSelecionado" src="assets\img\bronco_sport.png"
+    class="img-fluid d-none d-sm-block mt-4 mx-auto w-75" alt="Responsive image">
