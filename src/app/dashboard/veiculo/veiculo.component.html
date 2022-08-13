@@ -8,8 +8,8 @@
       <div class="card-header">
         Veiculo
       </div>
-      <div class="card-body me-auto ms-auto">
-        <select [(ngModel)]="veiculoSelecionado">
+      <div *ngIf="veiculos$ | async as veiculos" class="card-body me-auto ms-auto">
+        <select  [(ngModel)]="veiculoSelecionado">
           <option *ngFor="let veiculo of veiculos" [ngValue]="veiculo">{{veiculo.vehicle}}</option>
         </select>
       </div>
@@ -22,7 +22,7 @@
         Total de Vendas
       </div>
       <div class="card-body">
-        <p class="text-primary fs-3 text"> {{ veiculoSelecionado.volumetotal }} </p>
+        <p class="text-primary fs-3 text"> {{ veiculoSelecionado?.volumetotal }} </p>
         <p class="text-secondary"> Unid.</p>
       </div>
     </div>
@@ -34,7 +34,7 @@
         Conectados
       </div>
       <div class="card-body">
-        <p class="text-primary fs-3 text"> {{ veiculoSelecionado.connected }} </p>
+        <p class="text-primary fs-3 text"> {{ veiculoSelecionado?.connected }} </p>
         <p class="text-secondary"> Unid.</p>
       </div>
     </div>
@@ -46,12 +46,12 @@
         Update Software
       </div>
       <div class="card-body">
-        <p class="text-primary fs-3 text"> {{ veiculoSelecionado.softwareUpdates }} </p>
+        <p class="text-primary fs-3 text"> {{ veiculoSelecionado?.softwareUpdates }} </p>
         <p class="text-secondary"> Unid.</p>
       </div>
     </div>
   </div>
 
 </div>
-<img [src]="getImagemVeiculo(veiculoSelecionado)" class="img-fluid d-none d-sm-block mt-4 mx-auto w-75"
+<img *ngIf="!!veiculoSelecionado" [src]="getImagemVeiculo(veiculoSelecionado)" class="img-fluid d-none d-sm-block mt-4 mx-auto w-75"
   alt="Responsive image">

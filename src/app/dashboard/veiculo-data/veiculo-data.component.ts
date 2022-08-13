@@ -23,9 +23,9 @@ export class VeiculoDataComponent implements OnInit {
 
      this.veiculoDataService.getVeiculosData()
       .subscribe({
-        next: (resp) => {
-          console.log(resp);
-          this.veiculosDatas = resp.vehicleData;
+        next: (veiculosDatas: VeiculosDatas) => {
+          console.log(veiculosDatas);
+          this.veiculosDatas = veiculosDatas;
         }
       });
   }

@@ -9,38 +9,33 @@ const API = 'http://localhost:3000/vehicle';
   templateUrl: './veiculo.component.html',
   styleUrls: ['./veiculo.component.scss']
 })
-export class VeiculoComponent implements OnInit {
+export class VeiculoComponent  {
 
+  veiculos$ = this.veiculosService.getVeiculos();
 
   veiculos: Veiculos = [];
 
-  veiculoSelecionado!: Veiculo;
+  veiculoSelecionado!: Veiculo ;
 
   constructor(private veiculosService: VeiculoService) { }
 
-  ngOnInit(): void {
+  // ngOnInit(): void {
 
-    // getDogsBreed() {
-
-    // this.$dogsBreed()
-    //   .pipe(map(data => {
-    //     var dogs = this.keyValue.transform(data.message)
-    //     console.log(dogs)
-    //   }))
-    //   .subscribe();
-
-      this.veiculosService.getVeiculos()
-      .subscribe({
-        next: (resp) => {
-          console.log(resp);
-          this.veiculos = resp.vehicles;
-          this.veiculoSelecionado = this.veiculos[0];
-        }
-      });
-  }
+  //   this.veiculosService.getVeiculos()
+  //     .subscribe({
+  //       next: (vehicles: Veiculos) => {
+  //         console.log(vehicles);
+  //         this.veiculos = vehicles;
+  //         this.veiculoSelecionado = this.veiculos[0];
+  //       }
+  //     });
+  // }
 
   //Obtem o nome da imagen através do veiculoSelecionado.vehicle
-  getImagemVeiculo ({ vehicle }: Veiculo): string {
+  getImagemVeiculo (veiculo: Veiculo): string {
+    if (!veiculo) return '';
+
+    const { vehicle } = veiculo;
     const nomeImagem = vehicle
     .toLowerCase()
     .replace(' ', '_');
