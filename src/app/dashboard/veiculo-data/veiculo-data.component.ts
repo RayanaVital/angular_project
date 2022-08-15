@@ -43,23 +43,6 @@ export class VeiculoDataComponent implements OnInit {
     this.veiculoDataSelecionado = result;
   }
 
-  //  this.obs=this.mform.valueChanges
-  //     .pipe(
-  //       debounceTime(500),
-  //       switchMap(id => {
-
-  //         console.log(id)
-  //         return this.http.get(url)
-
-  //       })
-  //     )
-  //     .subscribe(data => console.log(data));
-  // }
-
-
-
-
-
 }
 
 

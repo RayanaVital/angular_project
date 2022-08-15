@@ -1,5 +1,5 @@
 <table class="table table-bordered border-dark ms-auto">
-  <thead class="table-primary">
+  <thead>
     <tr>
       <th scope="col">Código - Vin</th>
       <th scope="col">Odômetro</th>
@@ -9,7 +9,7 @@
       <th scope="col">Long.</th>
     </tr>
   </thead>
-  <tbody class="table-light">
+  <tbody class="table-light mb-3">
     <tr>
       <td>
         <input type="search" class="form-control" [ngModel]="textoBuscaVin" (ngModelChange)="getVeiculoData($event)"
@@ -20,8 +20,5 @@
       <td>{{veiculoDataSelecionado.status}}</td>
       <td>{{veiculoDataSelecionado.lat}}</td>
       <td>{{veiculoDataSelecionado.long}}</td>
-    </tr>
-    <tr>
-      <td></td>
     </tr>
   </tbody>
