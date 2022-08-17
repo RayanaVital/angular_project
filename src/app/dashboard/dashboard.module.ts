@@ -6,7 +6,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { VeiculoComponent } from './veiculo/veiculo.component';
 import { VeiculoDataComponent } from './veiculo-data/veiculo-data.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +19,8 @@ import { VeiculoDataComponent } from './veiculo-data/veiculo-data.component';
     DashboardRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
+
 
   ]
 })

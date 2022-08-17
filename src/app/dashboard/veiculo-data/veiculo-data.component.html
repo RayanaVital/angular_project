@@ -12,13 +12,14 @@
   <tbody class="table-light mb-3">
     <tr>
       <td>
-        <input type="search" class="form-control" [ngModel]="textoBuscaVin" (ngModelChange)="getVeiculoData($event)"
-          placeholder="Insira o código do veiculo">
+        <input type="search" class="form-control" [formControl]="veiculoInput" placeholder="Insira o código do veiculo">
       </td>
-      <td>{{veiculoDataSelecionado.odometer}}</td>
-      <td>{{veiculoDataSelecionado.fuelLevel}}</td>
-      <td>{{veiculoDataSelecionado.status}}</td>
-      <td>{{veiculoDataSelecionado.lat}}</td>
-      <td>{{veiculoDataSelecionado.long}}</td>
-    </tr>
+      <ng-container *ngIf="filtroPeloInput$ | async as filtroPeloInput$">
+        <td>{{filtroPeloInput$[0].odometer}}</td>
+        <td>{{filtroPeloInput$[0].fuelLevel}}</td>
+        <td>{{filtroPeloInput$[0].status}}</td>
+        <td>{{filtroPeloInput$[0].lat}}</td>
+        <td>{{filtroPeloInput$[0].long}}</td>
+      </ng-container>
+      </tr>
   </tbody>

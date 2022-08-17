@@ -1,47 +1,48 @@
+import { FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { VeiculosDatas, VeiculoData } from './veiculo-data';
+import { VeiculosDatas, VeiculoData, VeiculosDatasAPI } from './veiculo-data';
 import { VeiculoDataService } from './veiculo-data.service';
+import {tap, debounceTime, distinctUntilChanged, switchMap, filter, mergeWith} from 'rxjs/operators';
+
+const ESPERA_DIGITACAO = 300;
 
 @Component({
   selector: 'app-veiculo-data',
   templateUrl: './veiculo-data.component.html',
   styleUrls: ['./veiculo-data.component.scss']
 })
-export class VeiculoDataComponent implements OnInit {
+export class VeiculoDataComponent {
+
+  veiculoInput = new FormControl();
 
 
-  veiculosDatas: VeiculosDatas = [];
+  todosVeiculos$ = this.veiculoDataService.getVeiculosData().pipe(
+    tap(() => {
+      console.log('Fluxo Inicial');
+    })
+  );
 
-  veiculoDataSelecionado: Partial<VeiculoData> = {};
+  filtroPeloInput$ = this.veiculoInput.valueChanges.pipe(
+    debounceTime(ESPERA_DIGITACAO),
+    tap(() => {
+      console.log('Fluxo do Filtro');
+    }),
+    tap(console.log),
+    filter(
+      (valorDigitado) => valorDigitado.length >= 3 || !valorDigitado.length
+    ),
+    distinctUntilChanged(),
+    switchMap((valorDigitado) => this.veiculoDataService.getVeiculosData(valorDigitado)),
+    tap(console.log)
+  );
 
-  textoBuscaVin!: string;
+  veiculosDatas$ = mergeWith(this.todosVeiculos$, this.filtroPeloInput$);
+
 
 
   constructor(private veiculoDataService: VeiculoDataService) { }
 
-  ngOnInit(): void {
 
-     this.veiculoDataService.getVeiculosData()
-      .subscribe({
-        next: (veiculosDatas: VeiculosDatas) => {
-          console.log(veiculosDatas);
-          this.veiculosDatas = veiculosDatas;
-        }
-      });
-  }
-
-   getVeiculoData(textoBuscaVin: string) {
-    if (textoBuscaVin.length != 20) return;
-
-    const result = this.veiculosDatas.find(veiculoData => veiculoData.vin === textoBuscaVin);
-
-    if (!result) {
-      this.veiculoDataSelecionado = {};
-      return;
-    }
-
-    this.veiculoDataSelecionado = result;
-  }
 
 }
 
