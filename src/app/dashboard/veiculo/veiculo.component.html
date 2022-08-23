@@ -1,5 +1,5 @@
 
-<h2 class="text-primary text-center"> Dashboard FORD</h2>
+<h2 class="text-primary text-center mb-3">Dashboard FORD</h2>
 
 <div class="row justify-content-center m-0">
 
@@ -9,7 +9,7 @@
         Veiculo
       </div>
       <div *ngIf="veiculos$ | async as veiculos" class="card-body me-auto ms-auto">
-        <select  [(ngModel)]="veiculoSelecionado">
+        <select class="form-select form-select-lg mb-3 form-select-bg-primary " [(ngModel)]="veiculoSelecionado">
           <option  [ngValue]="undefined" disabled>Selecione</option>
           <option *ngFor="let veiculo of veiculos" [ngValue]="veiculo">{{veiculo.vehicle}}</option>
         </select>

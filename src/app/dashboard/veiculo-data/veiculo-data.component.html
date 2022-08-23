@@ -1,5 +1,5 @@
 <table class="table table-bordered border-dark ms-auto">
-  <thead>
+  <thead class ="text-light px-2" >
     <tr>
       <th scope="col">Código - Vin</th>
       <th scope="col">Odômetro</th>
@@ -9,10 +9,10 @@
       <th scope="col">Long.</th>
     </tr>
   </thead>
-  <tbody class="table-light mb-3">
-    <tr>
+  <tbody class="table-light mb-5 table-bordered border-white-50 h-75 w-75 p-3 ">
+    <tr class="text-center align-middle" >
       <td>
-        <input type="search" class="form-control" [formControl]="veiculoInput" placeholder="Insira o código do veiculo">
+        <input type="search" class="form-control w-100 p-3" [formControl]="veiculoInput" placeholder="Insira o código do veiculo">
       </td>
       <ng-container *ngIf="filtroPeloInput$ | async as filtroPeloInput$">
         <td>{{filtroPeloInput$[0].odometer}}</td>
@@ -21,5 +21,9 @@
         <td>{{filtroPeloInput$[0].lat}}</td>
         <td>{{filtroPeloInput$[0].long}}</td>
       </ng-container>
-      </tr>
+    </tr>
   </tbody>
+</table>
+
+
+
