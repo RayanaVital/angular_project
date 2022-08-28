@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Veiculos, Veiculo } from './veiculo';
+import { Component } from '@angular/core';
+import { Veiculo } from './veiculo';
 import { VeiculoService } from './veiculo.service';
-
-const API = 'http://localhost:3000/vehicle';
 
 @Component({
   selector: 'app-veiculo',
@@ -12,8 +10,6 @@ const API = 'http://localhost:3000/vehicle';
 export class VeiculoComponent  {
 
   veiculos$ = this.veiculosService.getVeiculos();
-
-  veiculos: Veiculos = [];
 
   veiculoSelecionado!: Veiculo ;
 

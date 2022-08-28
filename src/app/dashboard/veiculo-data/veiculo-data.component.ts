@@ -1,8 +1,9 @@
 import { FormControl } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
-import { VeiculosDatas, VeiculoData, VeiculosDatasAPI } from './veiculo-data';
+import { Component } from '@angular/core';
+import { VeiculosDatas } from './veiculo-data';
 import { VeiculoDataService } from './veiculo-data.service';
 import {tap, debounceTime, distinctUntilChanged, switchMap, filter, mergeWith} from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 const ESPERA_DIGITACAO = 300;
 
@@ -13,37 +14,22 @@ const ESPERA_DIGITACAO = 300;
 })
 export class VeiculoDataComponent {
 
+  constructor(private veiculoDataService: VeiculoDataService) { }
+
   veiculoInput = new FormControl();
 
-
-  todosVeiculos$ = this.veiculoDataService.getVeiculosData().pipe(
-    tap(() => {
-      console.log('Fluxo Inicial');
-    })
-  );
-
-  filtroPeloInput$ = this.veiculoInput.valueChanges.pipe(
+  filtroPeloInput$ : Observable<VeiculosDatas> = this.veiculoInput.valueChanges.pipe(
     debounceTime(ESPERA_DIGITACAO),
     tap(() => {
       console.log('Fluxo do Filtro');
     }),
-    tap(console.log),
     filter(
-      (valorDigitado) => valorDigitado.length >= 3 || !valorDigitado.length
+      (valorDigitado) => valorDigitado.length >= 3
     ),
     distinctUntilChanged(),
-    switchMap((valorDigitado) => this.veiculoDataService.getVeiculosData(valorDigitado)),
+    switchMap((valorDigitado: string) => this.veiculoDataService.getVeiculosData(valorDigitado)),
     tap(console.log)
   );
-
-  veiculosDatas$ = mergeWith(this.todosVeiculos$, this.filtroPeloInput$);
-
-
-
-  constructor(private veiculoDataService: VeiculoDataService) { }
-
-
-
 }
 
 

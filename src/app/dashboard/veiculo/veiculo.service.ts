@@ -1,8 +1,9 @@
 import { environment } from './../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { VeiculosAPI } from './veiculo';
+import { VeiculosAPI, Veiculos } from './veiculo';
 import {tap, map} from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 
 const API = environment.apiUrl;
@@ -14,17 +15,11 @@ export class VeiculoService {
 
   constructor(private http: HttpClient) { }
 
-  getVeiculos(){
+  getVeiculos(): Observable<Veiculos>{
     return this.http.get<VeiculosAPI>(`${API}/vehicle`)
     .pipe(
-      tap((valor) => console.log({valor})),
-      map(api => api.vehicles)
+      tap((api) => console.log({api})),
+      map((api : VeiculosAPI) => api.vehicles)
     );
   }
-
-
-
-
-
-
 }
