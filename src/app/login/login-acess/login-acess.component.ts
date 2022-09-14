@@ -1,3 +1,5 @@
+import { HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { UsuarioService } from './../../autenticacao/usuario/usuario.service';
 import { AutenticacaoService } from './../../autenticacao/autenticacao.service';
 import { Component, OnInit } from '@angular/core';
@@ -25,7 +27,7 @@ export class LoginAcessComponent implements OnInit {
         alert('Erro ao realizar login');
         console.log(error);
       }
-    });
+    }) ;
   }
 
 }

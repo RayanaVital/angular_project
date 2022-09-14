@@ -1,61 +1,72 @@
+<h2 class="text-primary text-center mb-2">Dashboard FORD</h2>
 
-<h2 class="text-primary text-center mb-3">Dashboard FORD</h2>
-
-<div class="row justify-content-center m-0">
-
+<div class="row justify-content-center col-sm-12 mt-4 ms-4">
   <div class="col">
-    <div class="card border border-dark p-2 h-100">
-      <div class="card-header">
-        Veiculo
-      </div>
-      <div *ngIf="veiculos$ | async as veiculos" class="card-body me-auto ms-auto">
-        <select class="form-select form-select-lg mb-3 form-select-bg-primary " [(ngModel)]="veiculoSelecionado">
-          <option  [ngValue]="undefined" disabled>Selecione</option>
-          <option *ngFor="let veiculo of veiculos" [ngValue]="veiculo">{{veiculo.vehicle}}</option>
+    <div class="card border border-dark w-75">
+      <div class="card-header">Veiculo</div>
+      <div
+        *ngIf="veiculos$ | async as veiculos"
+        class="card-body me-auto ms-auto"
+      >
+        <select
+          class="form-select mb-3 form-select-bg-primary"
+          [(ngModel)]="veiculoSelecionado"
+        >
+          <option [ngValue]="undefined" disabled>Selecione</option>
+          <option *ngFor="let veiculo of veiculos" [ngValue]="veiculo">
+            {{ veiculo.vehicle }}
+          </option>
         </select>
       </div>
     </div>
   </div>
 
   <div class="col">
-    <div class="card border border-dark p-2 h-100">
-      <div class="card-header">
-        Total de Vendas
-      </div>
+    <div class="card border border-dark w-75">
+      <div class="card-header">Total de Vendas</div>
       <div class="card-body">
-        <p class="text-primary fs-3 text"> {{ veiculoSelecionado?.volumetotal }} </p>
-        <p class="text-secondary"> Unid.</p>
+        <p class="text-primary fs-4 text">
+          {{ veiculoSelecionado?.volumetotal }}
+        </p>
+        <p class="text-secondary">Unid.</p>
       </div>
     </div>
   </div>
 
   <div class="col">
-    <div class="card border border-dark p-2 h-100">
-      <div class="card-header">
-        Conectados
-      </div>
+    <div class="card border border-dark w-75">
+      <div class="card-header">Conectados</div>
       <div class="card-body">
-        <p class="text-primary fs-3 text"> {{ veiculoSelecionado?.connected }} </p>
-        <p class="text-secondary"> Unid.</p>
+        <p class="text-primary fs-4 text">
+          {{ veiculoSelecionado?.connected }}
+        </p>
+        <p class="text-secondary">Unid.</p>
       </div>
     </div>
   </div>
 
   <div class="col">
-    <div class="card border border-dark p-2 h-100">
-      <div class="card-header">
-        Update Software
-      </div>
+    <div class="card border border-dark w-75">
+      <div class="card-header">Update Software</div>
       <div class="card-body">
-        <p class="text-primary fs-3 text"> {{ veiculoSelecionado?.softwareUpdates }} </p>
-        <p class="text-secondary"> Unid.</p>
+        <p class="text-primary fs-4 text">
+          {{ veiculoSelecionado?.softwareUpdates }}
+        </p>
+        <p class="text-secondary">Unid.</p>
       </div>
     </div>
   </div>
-
 </div>
-<img *ngIf="!!veiculoSelecionado" [src]="getImagemVeiculo(veiculoSelecionado)" class="img-fluid d-none d-sm-block mt-4 mx-auto w-75"
-  alt="Responsive image">
+<img
+  *ngIf="!!veiculoSelecionado"
+  [src]="getImagemVeiculo(veiculoSelecionado)"
+  class="img-fluid d-none d-sm-block mt-4 mx-auto w-50"
+  alt="Responsive image"
+/>
 
-  <img *ngIf="!veiculoSelecionado" src="assets\img\bronco_sport.png"
-    class="img-fluid d-none d-sm-block mt-4 mx-auto w-75" alt="Responsive image">
+<img
+  *ngIf="!veiculoSelecionado"
+  src="assets\img\bronco_sport.png"
+  class="img-fluid d-none d-sm-block mt-4 mx-auto w-50"
+  alt="Responsive image"
+/>
